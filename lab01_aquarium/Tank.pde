@@ -3,9 +3,9 @@ import java.util.Iterator;
 class Tank {
   int x, y, w, h, floor_height;
   ArrayList<Animal> animals;
-  //Iterator<Animal> animalIterator;
-  color WATER = #00FFFF;
-  color SAND = #000000;
+  Iterator<Animal> animalIterator;
+  color WATER = color(0, 255, 255);
+  color SAND = #E7C496;
   
   Tank(int x, int y, int w, int h, int floor_height){
     this.x = x;

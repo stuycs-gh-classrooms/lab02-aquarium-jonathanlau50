@@ -29,6 +29,6 @@ class Crab extends Animal {
   void display() {
     fill(255, 0, 0); // Change color for the crab
     stroke(0);
-    rect(position.x, position.y, aw, ah);
+    rect(position.x, position.y, size, size);
   }
 }

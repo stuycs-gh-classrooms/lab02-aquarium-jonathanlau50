@@ -10,7 +10,7 @@ class SineFish extends Animal {
   }
 
  void move() {
-    position.x += xspeed;
+    position.x += velocity.x;
     theta += angleSpeed;
     position.y = (int)(refy + 50 * sin(theta)); 
     if (position.x + size >= width || position.x <= 0) {
