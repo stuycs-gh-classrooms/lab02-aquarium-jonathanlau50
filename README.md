@@ -2,9 +2,9 @@
 # Aquarium Lab
 #### Name:
 #### TableBuddies+™
-- TB+ 0:
-- TB+ 1:
-- TB+ 2:
+- TB+ 0: Abel Bellows
+- TB+ 1: Uma Sukhu
+- TB+ 2: Zixi Feng
 
 ---
 ### Instructions
