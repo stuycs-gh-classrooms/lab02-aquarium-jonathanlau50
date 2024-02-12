@@ -5,20 +5,25 @@ int floorH = 100;
 int tankW;
 int tankH;
 
+
 void setup() {
-  size(600, 600);
+  size(600,600);
   tankW = width;
   tankH = height - 50;
   t = new Tank(tankX, tankY, tankW, tankH, floorH);
   t.display();
 }//setup
 
+
 void draw() {
   background(150);
   t.moveAnimals();
+  t.interactions();
+  t.clean();
   t.display();
 }
 
 void mouseClicked() {
-  t.addAnimal(mouseX, mouseY);
+  t.populate(100);
 }
+ 

@@ -3,24 +3,24 @@ class SineFish extends Animal {
   float angleSpeed;
   float refy;
   
-  SineFish(int _ax, int _ay) {
-    super(_ax, _ay);
+  SineFish(int x,int y, int size, Tank myTank){
+    super(x, y, size, myTank);
     angleSpeed = random(0.05, 0.2);
-    refy = ay;
+    refy = position.y;
   }
 
  void move() {
-    ax += xspeed;
+    position.x += xspeed;
     theta += angleSpeed;
-    ay = (int)(refy + 50 * sin(theta)); 
-    if (ax + aw >= width || ax <= 0) {
-      xspeed *= -1;
+    position.y = (int)(refy + 50 * sin(theta)); 
+    if (position.x + size >= width || position.x <= 0) {
+      velocity.x *= -1;
     }
   }
 
   void display() {
     fill(255, 0, 255); 
     stroke(0);
-    rect(ax, ay, aw, ah);
+    rect(position.x, position.y, size, size);
   }
 }

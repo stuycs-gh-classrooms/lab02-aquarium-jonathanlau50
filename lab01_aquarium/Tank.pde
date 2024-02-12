@@ -1,44 +1,79 @@
+import java.util.*;
+import java.util.Iterator;
 class Tank {
-  int tx, ty;
-  int tw, th;
-  int floorHeight;
+  int x, y, w, h, floor_height;
   ArrayList<Animal> animals;
+  //Iterator<Animal> animalIterator;
+  color WATER = #00FFFF;
+  color SAND = #000000;
   
-  Tank(int _tx, int _ty, int _tw, int _th, int _floorHeight) {
-    tx = _tx;
-    ty = _ty;
-    tw = _tw;
-    th = _th;
-    floorHeight = _floorHeight;
+  Tank(int x, int y, int w, int h, int floor_height){
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    this.floor_height = floor_height;
     animals = new ArrayList<Animal>();
   }
   
-  void addAnimal(int mx, int my) {
-    if (mx >= tx && mx <= tx + tw && my >= ty && my <= ty + th - floorHeight) {
-      if (int(random(0,2)) == 0) {
-        animals.add(new SineFish(mx, my));
+  void display(){
+    fill(WATER);
+    rect(x,y,w,h);
+    fill(SAND);
+    rect(x,y+h-floor_height, w, floor_height);
+    for (Animal a: animals){
+      a.display();
+    }
+  }
+  
+  void addAnimal(int x, int y){
+    animals.add(new Fish(x,y,this));
+  }
+  
+  
+  void populate(int n){
+    for (int i = 0; i<n; i++){
+      int species = (int) random(3);
+      if(species == 0){
+        animals.add(new Fish((int) random(x,x+w), (int) random(y + h), this));
       }
-      else {
-      animals.add(new Crab(mx, my));
+      if(species == 1){
+        animals.add(new Animal((int) random(x,x+w), (int) random(y + h),this));
+      }
+      if(species == 2){
+        animals.add(new Octopus((int) random(x,x+w), (int) random(y + h - floor_height),this));
       }
     }
   }
   
-  void moveAnimals() {
-    for (int i = 0; i < animals.size(); i++) {
-      animals.get(i).move();
+  void moveAnimals(){
+    for (Animal a: animals){
+      a.move();
     }
   }
   
-  void display() {
-    fill(0, 255, 255);
-    stroke(0, 255, 255);
-    rect(tx, ty, tw, th - floorHeight);
-    fill(#E7C496);
-    stroke(#E7C496);
-    rect(tx, ty + th - floorHeight, tw, floorHeight);
-    for (int i = 0; i < animals.size(); i++) {
-      animals.get(i).display();
+  void clean(){
+    Iterator<Animal> animalIterator = animals.iterator();
+    while(animalIterator.hasNext()){
+      Animal a = animalIterator.next();
+      if(a.remove){
+        animalIterator.remove();
+      }
     }
   }
+  
+  void interactions(){
+    for (Animal a: animals){
+      a.interaction(animals);
+    }
+  }
+  
+  PVector bottomCorner(){
+    return new PVector(x+w,y+h);
+  }
+  
+  PVector topCorner(){
+    return new PVector(x,y);
+  }
+  
 }
