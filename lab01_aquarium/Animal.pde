@@ -94,6 +94,9 @@ class Animal {
   
   void interaction(ArrayList<Animal> animals){
     for (Animal other: animals){
+      if (size > 150) {
+        this.die(); //overfeeding
+      }
       if(other != this && isTouching(other) && alive && other.alive && random(1) > 0.5){
         //basic eat
         float theirFactor = random(2);
