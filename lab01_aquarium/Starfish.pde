@@ -8,6 +8,10 @@ class Starfish extends Animal {
     numPoints = int(random(5, 8));
   }
   
+  Starfish(int x,int y, Tank myTank){
+    this(x,y,40, myTank);
+  }
+  
     boolean isValidStarfish() {
      if(position.y > tankY + (tankH - floorH)) {
        return true;

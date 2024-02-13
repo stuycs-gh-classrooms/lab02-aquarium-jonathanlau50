@@ -26,9 +26,26 @@ class Tank {
     }
   }
   
-  void addAnimal(int x, int y){
-    animals.add(new Fish(x,y,this));
-  }
+  void addAnimal(int x, int y, int type){
+    if (type == 1) {
+      animals.add(new Crab(x,y,this));
+    }
+    else if (type == 2) {
+      animals.add(new Goldfish(x,y,this));
+    }
+    else if (type == 3) {
+      animals.add(new SineFish(x,y,this));
+    }
+    else if (type == 4) {
+      animals.add(new Starfish(x,y,this));
+    }
+    else if (type == 5) {
+      animals.add(new Octopus(x,y,this));
+    }
+    else if (type == 6) {
+      animals.add(new Fish(x,y,this));
+    }
+  } 
   
   
   void populate(int n){

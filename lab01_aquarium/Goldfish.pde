@@ -6,10 +6,14 @@ class Goldfish extends Animal {
     velocity.y += 3;
   }
   
+  Goldfish(int x,int y, Tank myTank){
+    this(x,y,40, myTank);
+  }
+  
   void display() {
     super.display();
     fill(0);
-    circle(position.x + 10, position.y + size/2, 2);
+    circle(position.x + 10, position.y + size/4, 2);
   }
   
   
