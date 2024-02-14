@@ -37,7 +37,7 @@ class Tank {
       animals.add(new SineFish(x,y,this));
     }
     else if (type == 4) {
-      animals.add(new Starfish(x,y,this));
+      animals.add(new Frog(x,y,this));
     }
     else if (type == 5) {
       animals.add(new Octopus(x,y,this));

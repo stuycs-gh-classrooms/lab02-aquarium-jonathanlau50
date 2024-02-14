@@ -3,7 +3,8 @@ class Goldfish extends Animal {
   Goldfish(int x, int y, int size, Tank myTank) {
     super(x, y, size, myTank);
     fill(198, 131, 108);
-    velocity.y += 3;
+    this.foodChainID = size/2;
+    this.MAXVELOCITY = 20;
   }
   
   Goldfish(int x,int y, Tank myTank){
@@ -14,6 +15,21 @@ class Goldfish extends Animal {
     super.display();
     fill(0);
     circle(position.x + 10, position.y + size/4, 2);
+  }
+  
+  boolean inYBounds(PVector nextPos){
+    return nextPos.y - size/2  <= myTank.topCorner().y ||
+        nextPos.y + size/2  >= myTank.bottomCorner().y;
+  }
+  
+  void updateFoodChain(Animal other){
+    foodChainID = other.foodChainID*2 + foodChainID;
+  }
+  
+  void changeV(){
+    int dx = (int)random(-2,2);
+    int dy = (int)random(-2,2);
+    changeV(dx,dy);
   }
   
   

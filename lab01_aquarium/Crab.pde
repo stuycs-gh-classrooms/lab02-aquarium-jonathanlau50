@@ -49,5 +49,4 @@ class Crab extends Animal {
   void updateFoodChain(Animal other){
     foodChainID = other.foodChainID + foodChainID;
   }
-  
 }

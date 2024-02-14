@@ -29,4 +29,19 @@ class SineFish extends Animal {
     stroke(0);
     rect(position.x, position.y, size, size);
   }
+  
+  boolean inYBounds(PVector nextPos){
+    return nextPos.y - size/2  <= myTank.topCorner().y ||
+        nextPos.y + size/2  >= myTank.bottomCorner().y;
+  }
+  
+  void updateFoodChain(Animal other){
+    foodChainID = other.foodChainID*2 + foodChainID;
+  }
+  
+  void changeV(){
+    int dx = (int)random(-2,2);
+    int dy = (int)random(-2,2);
+    changeV(dx,dy);
+  }
 }
