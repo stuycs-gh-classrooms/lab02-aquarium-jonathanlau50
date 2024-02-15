@@ -9,6 +9,7 @@ class Animal {
   
   //Interaction Vars
   int foodChainID;
+  int animalEaten;
   
   //State Vars
   boolean alive;
@@ -94,9 +95,6 @@ class Animal {
   
   void interaction(ArrayList<Animal> animals){
     for (Animal other: animals){
-      if (size > 150) {
-        this.die(); //overfeeding
-      }
       if(other != this && isTouching(other) && alive && other.alive && random(1) > 0.5){
         //basic eat
         float theirFactor = random(2);
@@ -105,22 +103,26 @@ class Animal {
         if(other.foodChainID*theirFactor < this.foodChainID*myFactor){
           this.eat(other);
           other.die();
+          this.animalEaten++;
         }
         else if(other.foodChainID*theirFactor == this.foodChainID*myFactor){
           
           if(random(1) > 0.5){
             this.eat(other);
             other.die();
+            this.animalEaten++;
           }
           else{
             other.eat(this);
             this.die();
+            other.animalEaten++;
           }
           
         }
         else {
           other.eat(this);
           this.die();
+          other.animalEaten++;
         }
       }
     }

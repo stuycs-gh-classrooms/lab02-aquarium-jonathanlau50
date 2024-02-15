@@ -32,5 +32,10 @@ class Goldfish extends Animal {
     changeV(dx,dy);
   }
   
-  
+  void interaction(ArrayList<Animal> animals) {
+    super.interaction(animals);
+    if (animalEaten > 10) {
+        die(); //can die from eating too many animals
+      }   
+    }
 }

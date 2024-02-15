@@ -36,4 +36,11 @@ class Frog extends Animal {
     int dy = (int)random(-2,2);
     changeV(dx,dy);
   }
+  
+  void interaction(ArrayList<Animal> animals) {
+    super.interaction(animals);
+    if (animalEaten > 15) {
+        die(); //can die from eating too many animals
+      }   
+    }
 }

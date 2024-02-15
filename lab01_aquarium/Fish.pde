@@ -37,4 +37,11 @@ class Fish extends Animal{
     changeV(dx,dy);
   }
   
+  void interaction(ArrayList<Animal> animals) {
+    super.interaction(animals);
+    if (animalEaten > 20) {
+        die(); //can die from eating too many animals
+      }   
+    }
+  
 }

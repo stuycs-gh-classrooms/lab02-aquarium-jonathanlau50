@@ -56,4 +56,11 @@ class Crab extends Animal {
   void updateFoodChain(Animal other){
     foodChainID = other.foodChainID + foodChainID;
   }
+  
+  void interaction(ArrayList<Animal> animals) {
+    super.interaction(animals);
+    if (size > 150) {
+        die(); //can die via overfeeding
+      }   
+    }
 }
