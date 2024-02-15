@@ -18,9 +18,9 @@ class Crab extends Animal {
     velocity.y += gravity; // Apply gravity
     position.y += velocity.y; // Update vertical position
 
-    if (position.y + size/2 >= height - floorH) {
+    if (position.y + size/2 >= height - floorH - size/2) {
       reachedFloor = true;
-      position.y = height - floorH;
+      position.y = height - floorH - size/2;
       velocity.y = 0; // Stop falling when reached the floor
       velocity.x = speedGenerator(); // Start crawling randomly left or right
     }
@@ -29,8 +29,15 @@ class Crab extends Animal {
     // Randomly change direction when hitting the walls
     if (position.x + size/2 >= width || position.x - size/2 <= 0) {
       velocity.x *= -1;
+      if (position.x + size/2 >= width) {
+        position.x = width - size/2;
+      }
+      else if (position.x - size/2 <= 0) {
+        position.x = size/2;
+      }
     }
     position.x += velocity.x; // Move horizontally
+    position.y = height - floorH - size/2;
   }
 }
 

@@ -23,10 +23,6 @@ void draw() {
   t.display();
 }
 
-void mouseClicked() {
-  //t.populate(10);
-}
-
 void keyPressed() {
   if (key == '1') {
     t.addAnimal(mouseX, mouseY, 1);

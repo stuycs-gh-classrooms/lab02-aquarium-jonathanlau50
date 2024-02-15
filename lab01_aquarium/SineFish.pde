@@ -19,15 +19,21 @@ class SineFish extends Animal {
   position.x += velocity.x;
   theta += angleSpeed;
   position.y = (int)(refy + 50 * sin(theta)); 
-  if (position.x + size >= width || position.x <= 0) {
-    velocity.x *= -1;
-  }
+  if (position.x + size/2 >= width || position.x - size/2 <= 0) {
+      velocity.x *= -1;
+      if (position.x + size/2 >= width) {
+        position.x = width - size/2;
+      }
+      else if (position.x - size/2 <= 0) {
+        position.x = size/2;
+      }
+    }
 }
 
   void display() {
     fill(255, 0, 255); 
     stroke(0);
-    rect(position.x, position.y, size, size);
+    circle(position.x, position.y, size);
   }
   
   boolean inYBounds(PVector nextPos){

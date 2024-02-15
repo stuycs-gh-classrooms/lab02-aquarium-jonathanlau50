@@ -27,8 +27,8 @@ class Goldfish extends Animal {
   }
   
   void changeV(){
-    int dx = (int)random(-2,2);
-    int dy = (int)random(-2,2);
+    int dx = (int)random(-3,3);
+    int dy = (int)random(-3,3);
     changeV(dx,dy);
   }
   
